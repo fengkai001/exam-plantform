@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/blankquiz")
 public class BlankQuizController {
     private BlankQuizApplicationService blankQuizApplicationService;
 
@@ -19,27 +20,27 @@ public class BlankQuizController {
         this.blankQuizApplicationService = blankQuizApplicationService;
     }
 
-    @GetMapping("/blankquizzes")
+    @GetMapping("/all")
     List<BlankQuiz> getAll() {
         return blankQuizApplicationService.getAll();
     }
 
-    @PostMapping("/blankquiz")
+    @PostMapping
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     BlankQuizDTO create(@RequestBody BlankQuizCommand command) {
         final BlankQuizId id = blankQuizApplicationService.create(command);
-        return BlankQuizDTO.from(id);
+        return BlankQuizDTO.from(id.toString());
     }
 
-    @PutMapping("/blankquiz/{blankQuizId}")
+    @PutMapping("/{blankQuizId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void revise(@PathVariable String blankQuizId, @RequestBody BlankQuizCommand command) {
-        blankQuizApplicationService.update(blankQuizId, command);
+        blankQuizApplicationService.revise(blankQuizId, command);
     }
 
-    @PutMapping("/blankquiz/delete/{blankQuizId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/delete/{blankQuizId}")
+    @ResponseStatus(HttpStatus.OK)
     void delete(@PathVariable String blankQuizId) {
         blankQuizApplicationService.delete(blankQuizId);
     }

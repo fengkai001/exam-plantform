@@ -8,9 +8,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class BlankQuizDTO {
-    private String uri;
+    private String blankQuizId;
 
-    public static BlankQuizDTO from(BlankQuizId blankQuizId) {
-        return new BlankQuizDTO("papers/" + blankQuizId);
+    public static BlankQuizDTO from(String blankQuizId) {
+        return new BlankQuizDTO(blankQuizId);
     }
 }

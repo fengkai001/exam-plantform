@@ -29,7 +29,7 @@ public class BlankQuizApplicationService {
         return id;
     }
 
-    public void update(String blankQuizId, BlankQuizCommand command) {
+    public void revise(String blankQuizId, BlankQuizCommand command) {
         final BlankQuiz blankQuiz = blankQuizRepository.find(new BlankQuizId(blankQuizId));
         final String teacherId = command.getTeacherId();
         final String content = command.getContent();
