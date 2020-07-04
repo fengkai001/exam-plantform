@@ -12,6 +12,6 @@ public class BlankQuizDto {
 
     public static BlankQuiz toBlankQuiz(BlankQuizDto blankQuizDto) {
         // TODO map BlankQuizDto to BlankQuiz
-        return null;
+        return new BlankQuiz(blankQuizDto.quizId, blankQuizDto.score);
     }
 }
