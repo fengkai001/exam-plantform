@@ -44,6 +44,10 @@ public class BlankQuizApplicationService {
         blankQuizRepository.delete(new BlankQuizId(blankQuizId));
     }
 
+    public BlankQuiz find(String blankQuizId) {
+        return blankQuizRepository.find(new BlankQuizId(blankQuizId));
+    }
+
     public List<BlankQuiz> getAll() {
         return blankQuizRepository.getAll();
     }

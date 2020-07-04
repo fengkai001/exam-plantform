@@ -44,4 +44,9 @@ public class BlankQuizController {
     void delete(@PathVariable String blankQuizId) {
         blankQuizApplicationService.delete(blankQuizId);
     }
+
+    @GetMapping("/{blankQuizId}")
+    BlankQuiz find(@PathVariable String blankQuizId) {
+        return blankQuizApplicationService.find(blankQuizId);
+    }
 }
